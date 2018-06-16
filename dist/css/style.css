@@ -1,0 +1,375 @@
+body {
+    margin: 0px 0px 0px 0px;
+}
+
+/* 계산기 전체 */
+#calculator {
+    font-size: 0;
+    width: 450px;
+    height: auto;
+    padding: 20px;
+    margin: auto;    
+    border-radius: 3px;
+    background: rgba(0,0,0,0.3);
+}
+
+/* 계산기 중 최상단 결과가 보여지는 창 */
+#result {
+    width: 407.5px;
+    height: 50px;
+    
+    margin-bottom: 15px;
+    padding: 0px 15px 0px 15px;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: inset 0 0px 3px;
+    font: 25px digital;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    
+	background: rgba(0, 0, 0, 0.2);
+	color: white;
+}
+
+/* add func container */
+.space {
+    width: 407.5px;
+    height: 330px;
+    margin-bottom: 15px;
+    padding: auto;
+    justify-content: center;
+
+    display: none;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+
+/* 모달창을 띄우는 버튼  */
+#addfunc {    
+    display: none;
+    vertical-align: middle;
+    align-self: center;
+
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; 
+    
+    cursor: pointer;
+    user-select: none;
+
+    vertical-align: middle;
+    text-align: center;
+    font: bold 30px sans-serif;
+    color: #ccc;
+    box-shadow: 4px 6px rgba(0, 0, 0, 0.2);
+    
+    background: radial-gradient(#686959, #535353);
+}
+
+#addfunc:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#addfunc:hover {
+	background: rgba(255,255,255,0.8);    
+	transition: all 1s ease-in;
+}
+
+#add-button {
+    color: #46ffac;
+    font-size: 35px;
+}
+
+
+/* 일반 버튼 */
+.key {
+    align-content: center;
+    width: 74px;
+    height: 50px;
+
+	background: rgba(0,0,0,0.5);
+	border-radius: 3px;
+    box-shadow: 4px 6px rgba(0, 0, 0, 0.2);
+    color: #ccc;
+	line-height: 56px;
+    user-select: none;
+    
+    display: inline-flex;
+    margin: 5px 4px 5px 4px;
+    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 2px 5px 2px;
+    cursor: pointer;
+    font: bold 20px sans-serif;
+	transition: all 0.2s ease;
+}
+
+.key:hover {
+	background: rgba(255,255,255,0.8);
+	color: #333;
+}
+
+.key.empty {
+    opacity: 0.5;
+}
+
+.key.empty:active {
+    background-color: #eeeeee;    
+    box-shadow: 0 0px #eeeeee;
+    transform: translateY(-0px);
+}
+
+.key.eval-key:hover {
+    background:#00BF9A;
+    color: #ffffff;
+    border-radius:50%;
+    color: white;
+}
+
+.key.clear-key:hover {
+    background:RED;
+    color: #ffffff;
+    border-radius:50%;
+    color: white;
+}
+
+/* 추가 기능에 있는 버튼 */
+.key.inner {
+    width: 61px;
+    margin: 0px 3.5px 10px 3px;    
+}
+
+.func-containter {    
+    width: 407.5px;
+    height: 65px;
+    margin-bottom: 10px;
+    padding: auto;
+
+    justify-content: center;
+
+    /*display: none;*/
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+
+.symbol-key {
+    font: italic 20px "Times New Roman"
+}
+
+.function-key {
+    font: italic 15px "Times New Roman"
+}
+
+.eval-key {
+    background-color: #008975;
+    color: white;
+}
+
+.clear-key {
+    background-color: #bb1c09;
+    color: white;
+}
+
+.key:active {
+    /*
+    background-color: #a1a1a1;
+    box-shadow: 0 5px #666;
+    */
+    transform: translateY(4px);
+    
+	box-shadow: 0px 0px rgba(0, 0, 0, 0.2);
+	top: 4px;
+
+}
+
+.remodal-bg.with-red-theme.remodal-is-opening,
+.remodal-bg.with-red-theme.remodal-is-opened {
+    filter: none;
+}
+
+.remodal-overlay.with-red-theme {
+    background-color: #f44336;
+}
+
+.remodal.with-red-theme {
+    background: #fff;
+}
+
+/* 모달폼 버튼 */
+.button {    
+    cursor: pointer;
+    width: 120px;
+    height: 50px;
+    margin: 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    background-color: #538fbe;
+    padding: 10px 5px;
+    font-size: 24px;
+    border: 1px solid #2d6898;
+    background-image: linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+ 
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(73,132,180)),
+        color-stop(1, rgb(97,155,203))
+    );
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-shadow: 0px -1px 0px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+    -moz-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+    box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+}
+
+.button:active {
+    background-image: linear-gradient(bottom, rgb(88,154,204) 0%, rgb(90,150,199) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(88,154,204) 0%, rgb(90,150,199) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(88,154,204) 0%, rgb(90,150,199) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(88,154,204) 0%, rgb(90,150,199) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(88,154,204) 0%, rgb(90,150,199) 100%);
+ 
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(88,154,204)),
+        color-stop(1, rgb(90,150,199))
+    );
+}
+
+/* 취소 버튼  */
+.btn.remove {
+    background-color: Crimson; /* Blue background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 5px 5px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btn.remove:hover {
+    background-color: FireBrick;
+}
+
+a {
+    text-decoration:none 
+}
+
+a:hover {
+    text-decoration:none 
+}
+
+#graph-modal-container {
+    width: 425px;
+    height: auto;
+}
+
+#function-container {
+    width:350px; 
+    height:50px; 
+    text-align: left; 
+    
+    /* border: 1px solid lightgray; */
+    justify-content: left;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+
+#graph-container {
+    width: 350px;
+    height: 350px;
+
+    /* border: 1px solid lightgray; */
+    
+    
+    
+    justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    
+    font-size: 20px;
+
+        -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Safari */
+           -khtml-user-select: none; /* Konqueror HTML */
+             -moz-user-select: none; /* Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                  user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome and Opera */
+}
+
+#function-settings-container {
+    width: 350px;
+    height: auto;
+
+    /* border: 1px solid lightgray; */       
+    
+    text-align: left;
+    justify-content: center;
+
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+#function-settings {
+    width: 350px;
+    height: auto;
+    /* border: 1px solid lightgray; */
+}
+
+.domain { 
+    display: inline-block;
+    width: 80px;
+    margin-left: 10px;
+    /* border: 1px solid lightgray; */
+}
+
+#hidden-container {
+    margin-top: 20px;
+    display: -webkit-box;
+    justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+
+label {
+    font-weight: normal;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.key.show-graph {
+    background-color: #ffffff;
+}
+
+.key.show-graph:hover {
+    border-radius:50%;
+}

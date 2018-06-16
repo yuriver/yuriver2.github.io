@@ -1,0 +1,193 @@
+<html>
+<head>    
+    <title> hw3_2012726030_유가람 </title>
+
+    <script type="text/javascript" src="dist/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="dist//css/style.css">
+    <script type="text/javascript" src="dist/js/math.js"></script>
+    <script type="text/javascript" src="dist/js/calc.js"></script>
+    
+    <!-- dialogue(modal form) -->
+    <link rel="stylesheet" href="dist/css/remodal.css">
+    <link rel="stylesheet" href="dist/css/remodal-default-theme.css">
+    <script src="dist/js/remodal.js"></script>
+
+    <!-- remove, add button -->
+    <link rel="stylesheet" href="dist/css/font-awesome.css">
+
+    <!-- for numpad -->
+    <link rel="stylesheet" href="dist/css/numpad.css">
+    <script src="dist/js/numpad.js"></script>
+    <script src="dist/js/numpad.settings.js"></script>
+
+    <!-- draw graph -->
+    <script src="dist/js/plotly.min.js"></script>
+    <script src="dist/js/plotly.draw.js"></script>
+
+</head>
+ 
+<body>   
+    <p> &nbsp; </p>
+
+    <div id="calculator">
+        <div id="result">0</div>      
+        
+        <div class="space">
+            <a href="#modal">
+                <div id="addfunc"> 
+					<i class="fa fa-plus" aria-hidden="true" id="add-button"></i>
+                </div>
+            </a>
+        </div>       
+
+        <div class="func-containter" id="funcLogical">
+            <span class="key inner">==</span>
+            <span class="key inner">!=</span>
+            <span class="key inner">&lt;=</span>
+            <span class="key inner">&gt;=</span>        
+            <span class="key inner">&lt;</span>
+            <span class="key inner">&gt;</span>
+        </div>
+    
+        <div class="func-containter" id="funcDetvec">
+            <span class="key inner">[</span>
+            <span class="key inner">]</span>
+            <span class="key inner">,</span>
+            <span class="key inner">;</span>        
+            <span class="key function-key inner">inv</span>
+            <span class="key function-key inner">det</span>
+        </div>
+    
+        <div class="func-containter" id="funcConsts">
+            <span class="key symbol-key inner">pi</span>
+            <span class="key symbol-key inner">e</span>
+            <span class="key symbol-key inner">i</span>
+            <span class="key symbol-key inner">√2</span>
+            <span class="key symbol-key inner">√3</span>
+            <span class="key symbol-key inner">√5</span>
+        </div>
+        
+        <div class="func-containter" id="funcTrietc">
+            <span class="key function-key inner">sin</span>
+            <span class="key function-key inner">cos</span>
+            <span class="key function-key inner">tan</span>
+            <span class="key function-key inner">exp</span>
+            <span class="key function-key inner">log</span>
+            <span class="key function-key inner">sqrt</span>
+        </div>
+            
+        <div class="func-containter" id="funcVarfun">
+            <span class="key symbol-key inner">w</span>    
+            <span class="key symbol-key inner">x</span>
+            <span class="key symbol-key inner">y</span>
+            <span class="key symbol-key inner">z</span>
+            <span class="key symbol-key inner">f</span>
+            <span class="key symbol-key inner">g</span>
+        </div>
+
+        <p>            
+            <span class="key">/</span>        
+            <span class="key">*</span>        
+            <span class="key">-</span> 
+            <span class="key">+</span>
+            <span class="key">=</span>
+        </p>
+
+        <p>
+            <span class="key">^</span>
+            <span class="key">7</span>
+            <span class="key">8</span>
+            <span class="key">9</span>        
+            <span class="key clear-key">C</span>
+        </p>
+
+        <p>            
+            <span class="key">%</span>
+            <span class="key">4</span>
+            <span class="key">5</span>
+            <span class="key">6</span>
+            <span class="key clear-key">CL</span>     
+        </p>
+
+        <p>
+            <span class="key">,</span>
+            <span class="key">1</span>
+            <span class="key">2</span>
+            <span class="key">3</span>
+            <span class="key eval-key">EV</span>  
+        </p>
+
+        <p>
+            <span class="key">(</span>
+            <span class="key">)</span>
+            <span class="key">0</span>
+            <span class="key">.</span>
+
+            <a href="#modal2">
+                <img src="dist/images/graph.png"  class="key show-graph">    
+                </img>
+            </a>   
+        </p>
+    </div>
+
+    <div id="hidden-container">
+        <input type="text" id="function-f-define" class="function-define" value="" style="display: none;"></input>
+        <input type="text" id="function-g-define" class="function-define" value="" style="display: none;"></input>
+    </div>
+
+    
+
+    
+
+
+	<div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc" data-remodal-options="closeOnOutsideClick: false">
+        <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+		<p>
+			<div data-remodal-action="close" class="button" id="logical" add-func-name="funcLogical"> 비교/논리 </div>
+			<div data-remodal-action="close" class="button" id="detvec" add-func-name="funcDetvec"> 행렬/벡터 </div>
+			<div data-remodal-action="close" class="button" id="trietc" add-func-name="funcTrietc"> 삼각/기타 </div>
+		</p>
+		<p>
+			<div data-remodal-action="close" class="button" id="consts" add-func-name="funcConsts"> 상수 </div>
+			<div data-remodal-action="close" class="button" id="varfun" add-func-name="funcVarfun"> 변수/함수 </div>        
+		</p>
+	</div>
+
+	<div class="remodal" data-remodal-id="modal2" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc" data-remodal-options="closeOnOutsideClick: false">
+        <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+        
+        <div id="graph-modal-container">			
+			<div id="graph-container" width="350px" height="350px" ></div>
+
+			<p></p>
+			
+			<div id="function-settings-container">
+                <div class="function-settings" id="graph-domain">
+                    <label for="domain">Domain</label> <p></p>
+
+                    <div id="f-domain-container" class="domain-container">
+                        <label for="f-domain" class="domain"> f domain :  </label>
+                    
+                        <input type="text" id="f-domain-min" class="domain-input" value="-10">
+                         to
+                        <input type="text" id="f-domain-max" class="domain-input" value="10">
+                    </div>
+					   
+					<p>
+                    <div id="g-domain-container" class="domain-container">
+                        <label for="g-domain" class="domain"> g domain : </label>
+                        
+                        <input type="text" id="g-domain-min" class="domain-input" value="-10">
+                         to 
+                        <input type="text" id="g-domain-max" class="domain-input" value="10">
+                    </span>
+                </div>
+            </div>
+		</div>
+	</div>
+</body>
+</html>
